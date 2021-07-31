@@ -1,0 +1,20 @@
+#!/bin/bash
+set -euo pipefail
+
+if [ -n "${DEBUG:-}" ]; then
+  set -x
+fi
+
+FILE=${1}
+
+echo "sync starting: $FILE..."
+if [ ! -f /tmp/rclone.conf ] \
+  || diff -q /tmp/rclone.conf /config/rclone.conf > /dev/null; then
+  cp /config/rclone.conf /tmp/rclone.conf
+fi
+
+RCLONE_COMMAND="${RCLONE_COMMAND//\$FILE/$FILE}"
+IFS=' ' read -r -a _rclone_args <<< "$RCLONE_COMMAND"
+
+rclone --config /tmp/rclone.conf "${_rclone_args[@]}" \
+  && echo "sync complete: $FILE"
