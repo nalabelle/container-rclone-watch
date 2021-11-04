@@ -1,6 +1,6 @@
-FROM rclone/rclone:latest AS upstream
+FROM rclone/rclone:1.57.0 AS upstream
 
-FROM library/debian:stable
+FROM library/debian:stable-20211011-slim
 
 RUN apt-get update && apt-get install -y \
   ca-certificates \
