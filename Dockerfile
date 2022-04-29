@@ -1,4 +1,4 @@
-FROM rclone/rclone:1.58.0 AS upstream
+FROM rclone/rclone:1.58.1 AS upstream
 
 FROM library/debian:stable-20211011-slim
 
