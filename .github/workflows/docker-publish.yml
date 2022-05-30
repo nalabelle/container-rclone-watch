@@ -55,9 +55,9 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=ref,suffix=-{{date 'YYYYMMDD'}},event=branch
-            type=ref,suffix=-{{date 'YYYYMMDD'}},event=tag
-            type=ref,suffix=-{{date 'YYYYMMDD'}},event=pr
+            type=ref,suffix=-{{date 'YYYYMMDDHHmmss'}},event=branch
+            type=ref,suffix=-{{date 'YYYYMMDDHHmmss'}},event=tag
+            type=ref,suffix=-{{date 'YYYYMMDDHHmmss'}},event=pr
             type=ref,event=branch
             type=ref,event=tag
             type=ref,event=pr
